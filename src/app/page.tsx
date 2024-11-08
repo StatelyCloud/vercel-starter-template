@@ -1,8 +1,9 @@
-"use server";
-
 import { fetchProfileWithLinks } from "@/lib/actions";
 import Image from "next/image";
 import Link from "next/link";
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 const isEditable = process.env.NEXT_PUBLIC_EDITABLE !== 'false';
 

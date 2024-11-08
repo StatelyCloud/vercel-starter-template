@@ -8,7 +8,7 @@ export default function FullNameEditor({ initialFullName }: { initialFullName: s
   const [fullName, setFullName] = useState(initialFullName);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleRename = async (e) => {
+  const handleRename = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     await renameProfile(fullName);
     setIsEditing(false);

@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FStatelyCloud%2Fvercel-starter-template&env=STATELY_STORE_ID,STATELY_CLIENT_SECRET,STATELY_CLIENT_SECRET,PROFILE_SLUG,NEXT_PUBLIC_EDITABLE&envDescription=API%20keys%20and%20Store%20configuration.&envLink=https%3A%2F%2Fdocs.stately.cloud%2Fguides%2Fconnect%2F&skippable-integrations=1)
 
-## Getting Started
+# Vercel Starter Template
 
-First, run the development server:
+This is a sample NextJS webapp that uses StatelyDB.
 
-```bash
+*NOTE:* You MUST set up your StatelyDB store and schema following the instructions below before deploying to Vercel!
+
+## Features
+
+- Uses a [sample schema](./schema/schema.ts) that defines the `Profile` and `Link` Item types, and [related generated typescript types](./src/lib/generated).
+- Displays a profile page and a collection of links. By default the site is not editable, which you can change by updating the `NEXT_PUBLIC_EDITABLE` environment variable to `true`.
+
+## Prerequisites
+
+- Node.js 14.x or later
+- Vercel account
+- Stately Cloud account and access to a StatelyDB Store
+
+## Setup
+
+1. Clone this repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Follow the instructions below under _StatelyDB Schema Setup_ to configure your StatelyDB Store and associated schema.
+4. For local development, create a `.env.local` file in the root directory with the following content:
+   ```
+   STATELY_CLIENT_ID=your_client_id
+   STATELY_CLIENT_SECRET=your_client_secret
+   STATELY_STORE_ID=12345
+   PROFILE_SLUG=default
+   NEXT_PUBLIC_EDITABLE=false
+   ```
+   Replace `your_client_id`, `your_client_secret`, and `12345` with your actual StatelyDB credentials and store ID.  Replace `your_base_url` with the base url of your app (e.g. `http://localhost:3000` or `https://myapp.vercel.app`).
+   
+   See `.env.local.example` for more details on the other configuration options.
+
+## StatelyDB Schema Setup
+
+1. Install the Stately CLI:
+   ```
+   curl -sL https://stately.cloud/install | sh
+   ```
+2. Log in to your Stately account:
+   ```
+   stately login
+   ```
+3. Navigate to the `schema` directory:
+   ```
+   cd schema
+   ```
+4. Install dependencies:
+   ```
+   npm install
+   ```
+5. Publish the schema:
+   ```
+   stately schema put --schema-id <your_schema_id> schema.ts
+   ```
+6. Bind the schema to your store:
+   ```
+   stately schema bind --schema-id <your_schema_id> --store-id 12345
+   ```
+7. Generate the TypeScript client:
+   ```
+   stately schema generate --language ts --schema-id <your_schema_id> --version <schema_version> ../src/lib/generated
+   ```
+
+## Development
+
+Run the development server:
+
+```
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment to Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Install the Vercel CLI:
+   ```
+   npm i -g vercel
+   ```
+2. Log in to your Vercel account:
+   ```
+   vercel login
+   ```
+3. Deploy the application:
+   ```
+   vercel
+   ```
+4. Follow the prompts to configure your project
+5. Set up environment variables in the Vercel dashboard
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Your application is now deployed and ready to use!
