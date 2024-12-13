@@ -1,4 +1,4 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FStatelyCloud%2Fvercel-starter-template&env=STATELY_STORE_ID,STATELY_CLIENT_SECRET,STATELY_CLIENT_SECRET,PROFILE_SLUG,NEXT_PUBLIC_EDITABLE&envDescription=API%20keys%20and%20Store%20configuration.&envLink=https%3A%2F%2Fdocs.stately.cloud%2Fguides%2Fconnect%2F&skippable-integrations=1)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FStatelyCloud%2Fvercel-starter-template&env=STATELY_STORE_ID,STATELY_ACCESS_KEY,PROFILE_SLUG,NEXT_PUBLIC_EDITABLE&envDescription=API%20keys%20and%20Store%20configuration.&envLink=https%3A%2F%2Fdocs.stately.cloud%2Fguides%2Fconnect%2F&skippable-integrations=1)
 
 # Vercel Starter Template
 
@@ -40,8 +40,7 @@ This is a sample NextJS webapp that uses StatelyDB.
    vercel env add NEXT_PUBLIC_EDITABLE
    vercel env add PROFILE_SLUG
    vercel env add STATELY_STORE_ID
-   vercel env add STATELY_CLIENT_ID
-   vercel env add STATELY_CLIENT_SECRET
+   vercel env add STATELY_ACCESS_KEY
    ```
 
    See `.env.local.example` for example values.
