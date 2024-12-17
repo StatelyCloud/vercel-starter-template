@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@stately-cloud/client": "^0.12.0",
+    "@stately-cloud/client": "^0.17.1",
     "@stately-cloud/schema": "^0.10.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
