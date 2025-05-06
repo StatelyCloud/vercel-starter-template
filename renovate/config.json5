@@ -32,8 +32,6 @@
   // repositoryCache: "enabled",
   // cacheDir: "/tmp/renovate/cache",
 
-  // put everything except go mod tidy because
-  // we're doing that ourselves with `just tidy`
   postUpdateOptions: ["bundlerConservative", "npmDedupe", "pnpmDedupe", "yarnDedupeHighest"],
 
   // actual update config

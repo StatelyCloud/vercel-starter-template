@@ -21,5 +21,6 @@ jobs:
         with:
           renovate-version: ${{ env.RENOVATE_VERSION }}-full
           configurationFile: renovate/config.json5
+          token: ${{ secrets.GITHUB_TOKEN }}
         env:
           LOG_LEVEL: "debug"
