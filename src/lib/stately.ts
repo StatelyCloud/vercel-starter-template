@@ -9,5 +9,5 @@ if (!process.env.STATELY_STORE_ID) {
 
 export const statelyClient = createClient(
   BigInt(process.env.STATELY_STORE_ID),
-  { region: "us-west-2" },
+  { region: "us-east-1" },
 );

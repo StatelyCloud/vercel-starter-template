@@ -2,7 +2,6 @@
 /* eslint-disable */
 
 import { createClient as createGenericClient, StatelyError } from "@stately-cloud/client";
-import clientPackageJson from "@stately-cloud/client/package.json" with { "type": "json" };
 import {
   LinkSchema,
   ProfileSchema,
@@ -16,14 +15,18 @@ export const typeToSchema = {
   // objectTypes
 };
 
+
 /** The version of the schema that this client was generated for. */
-const SCHEMA_VERSION_ID = 5;
+const SCHEMA_VERSION_ID = 1;
+const SCHEMA_ID = 3451248916686001;
+
 
 export function createClient(storeId, opts) {
   
-  return createGenericClient(storeId, typeToSchema, SCHEMA_VERSION_ID, opts);
+  return createGenericClient(storeId, typeToSchema, SCHEMA_VERSION_ID, SCHEMA_ID, opts);
+  
 }
 
-if (createGenericClient.length < 3) {
+if (createGenericClient.length < 4) {
   throw new Error("Your version of @stately-cloud/client is too old. Please update to the latest version.");
 }
